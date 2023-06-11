@@ -1,0 +1,43 @@
+{
+  "name": "thoma/sae2-01",
+  "description": "SAÉ 2.01 - Développement d'une application de gestion de films",
+  "type": "project",
+  "license": "Copyleft",
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "pazz0001",
+      "email": "thomas.pazze@etudiant.univ-reims.fr"
+    },
+    {
+      "name": "eull0004",
+      "email": "nathan.eullaffroy@etudiant.univ-reims.fr"
+    }
+  ],
+  "scripts": {
+    "start:linux": [
+      "Composer\\Config::disableProcessTimeout",
+      "bin/run-server.sh"
+    ],
+    "start:windows": [
+      "Composer\\Config::disableProcessTimeout",
+      "bin/run-server.bat"
+    ],
+    "start": [
+      "@start:windows"
+    ],
+    "test:cs": [
+      "php vendor/bin/php-cs-fixer fix --dry-run --diff"
+    ],
+    "fix:cs": [
+      "php vendor/bin/php-cs-fixer fix"
+    ]
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.17"
+  }
+}
