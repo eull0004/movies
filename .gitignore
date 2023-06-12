@@ -1,2 +1,8 @@
-/vendor/
+.*swp*
+.tmp
+~
+.pptx
+.idea
 .php-cs-fixer.cache
+/.mypdo.ini
+/vendor/
