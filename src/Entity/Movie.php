@@ -85,7 +85,7 @@ class Movie
     {
         $movieRequest = MyPdo::getInstance()->prepare(
             <<<'SQL'
-			SELECT id, poster_id,originalTitle, overview, releaseDate, runtime, tagline, title
+			SELECT id, posterId,originalTitle, overview, releaseDate, runtime, tagline, title
 			FROM movie
 			WHERE id = ?
 			SQL
