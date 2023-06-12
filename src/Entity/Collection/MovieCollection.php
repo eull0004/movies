@@ -15,7 +15,7 @@ class MovieCollection
      * Movie objects being defined in the by an id and name properties
      * @return Movie[]
      */
-    public function findAll(): array
+    public static function findAll(): array
     {
         $movieDataReq = MyPDO::getInstance()->prepare(
             <<<'SQL'
