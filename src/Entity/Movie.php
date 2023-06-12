@@ -10,26 +10,88 @@ use Entity\Exception\EntityNotFoundException;
 class Movie
 {
     private int $id;
+    private int $posterId;
+    private string $originalTitle;
+    private string $overwiew;
+    private string $releaseDate;
+    private int $runtime;
+    private string $tagline;
     private string $title;
-    public function getTitle(): string
+
+    /**
+     * Get the value of posterId
+     */
+    public function getPosterId()
     {
-        return $this->title;
+        return $this->posterId;
     }
-    public function getId(): int
+
+    /**
+     * Get the value of originalTitle
+     */
+    public function getOriginalTitle()
+    {
+        return $this->originalTitle;
+    }
+
+    /**
+     * Get the value of overwiew
+     */
+    public function getOverwiew()
+    {
+        return $this->overwiew;
+    }
+
+    /**
+     * Get the value of releaseDate
+     */
+    public function getReleaseDate()
+    {
+        return $this->releaseDate;
+    }
+
+    /**
+     * Get the value of runtime
+     */
+    public function getRuntime()
+    {
+        return $this->runtime;
+    }
+
+    /**
+     * Get the value of tagline
+     */
+    public function getTagline()
+    {
+        return $this->tagline;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
     {
         return $this->id;
     }
+
+    /**
+     * Get the value of title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
     public static function findById(int $movieId): Movie
     {
-        $movieData = MyPdo::getInstance()->prepare(
+        $movieRequest = MyPdo::getInstance()->prepare(
             <<<'SQL'
-			SELECT id, title
+			SELECT id, posterId,originalTitle, overview, releaseDate, runtime, tagline, title
 			FROM movie
 			WHERE id = ?
 			SQL
         );
-        $movieData->execute([$movieId]);
-        $movie = $movieData->fetchObject(Movie::class);
+        $movieRequest->execute([$movieId]);
+        $movie = $movieRequest->fetchObject(Movie::class);
         if ($movie === false) {
             throw new EntityNotFoundException('Movie not found.');
         }
