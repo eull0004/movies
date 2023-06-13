@@ -12,7 +12,6 @@ class GenreCollection
     /**
      * find all the movie's genres in the database
      *
-     * @param  int $movieId
      * @return Genre[]
      */
     public static function findAll(): array
