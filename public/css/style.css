@@ -39,7 +39,7 @@ body {
 }
 
 .header h1::before {
-	content: '🚀 ';
+	content: '🎬 ';
 }
 .content {
 	padding-left: 20px;
@@ -64,6 +64,35 @@ body {
 
 .movie__title{
 	text-align: center;
+}
+
+.movie__info{
+	display: flex;
+	flex-direction: row;
+}
+
+.movie__text{
+	display: flex;
+	flex-direction: column;
+}
+
+.actor{
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	height: auto;
+}
+
+.second__text{
+	flex-direction: column;
+}
+
+.actor__avatar{
+	flex-grow: 1;
+}
+
+.actor__info{
+	flex-direction: row;
 }
 
 .grad__txt {
