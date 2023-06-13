@@ -16,45 +16,42 @@ class Cast
     private int $orderIndex;
 
 
-    /**
-     * Get the value of id
-     */
-    public function getId()
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * Get the value of movieId
-     */
-    public function getMovieId()
+
+    public function getMovieId(): int
     {
         return $this->movieId;
     }
 
-    /**
-     * Get the value of peopleId
-     */
-    public function getPeopleId()
+
+    public function getPeopleId(): int
     {
         return $this->peopleId;
     }
 
-    /**
-     * Get the value of role
-     */
-    public function getRole()
+
+    public function getRole(): string
     {
         return $this->role;
     }
 
-    /**
-     * Get the value of orderIndex
-     */
-    public function getOrderIndex()
+
+    public function getOrderIndex(): int
     {
         return $this->orderIndex;
     }
+    /**
+     * find the movie's using anCastid
+     * @param int $idCast
+     * @return Cast
+     * @throws EntityNotFoundException if cast not found in database
+     *
+     */
     public static function findById(int $idCast): Cast
     {
         $castRequest = MyPdo::getInstance()->prepare(
