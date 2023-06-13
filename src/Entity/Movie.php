@@ -10,7 +10,7 @@ use Entity\Exception\EntityNotFoundException;
 class Movie
 {
     private int $id;
-    private int $posterId;
+    private ?int $posterId;
     private string $originalTitle;
     private string $overview;
     private string $releaseDate;
