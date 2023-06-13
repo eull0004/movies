@@ -12,7 +12,7 @@ class People
     private int $id;
     private string $avatarId;
     private string $birthday;
-    private string $deathday=null;
+    private ?string $deathday;
     private string $name;
     private string $biography;
     private string $placeOfBirth;
