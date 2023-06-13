@@ -17,70 +17,45 @@ class Movie
     private int $runtime;
     private string $tagline;
     private string $title;
-
-    /**
-     * Get the value of posterId
-     */
-    public function getPosterId()
+    public function getPosterId(): int
     {
         return $this->posterId;
     }
-
-    /**
-     * Get the value of originalTitle
-     */
-    public function getOriginalTitle()
+    public function getOriginalTitle(): string
     {
         return $this->originalTitle;
     }
-
-    /**
-     * Get the value of overview
-     */
-    public function getOverview()
+    public function getOverview(): string
     {
         return $this->overview;
     }
-
-    /**
-     * Get the value of releaseDate
-     */
-    public function getReleaseDate()
+    public function getReleaseDate(): string
     {
         return $this->releaseDate;
     }
-
-    /**
-     * Get the value of runtime
-     */
-    public function getRuntime()
+    public function getRuntime(): int
     {
         return $this->runtime;
     }
-
-    /**
-     * Get the value of tagline
-     */
-    public function getTagline()
+    public function getTagline(): string
     {
         return $this->tagline;
     }
-
-    /**
-     * Get the value of id
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
-
-    /**
-     *  Get the value of title
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
+    /**
+     * find the movie's using an movie id
+     * @param int $movieId
+     * @return Movie
+     * @throws EntityNotFoundException if movie not found in database
+     *
+     */
     public static function findById(int $movieId): Movie
     {
         $movieRequest = MyPdo::getInstance()->prepare(

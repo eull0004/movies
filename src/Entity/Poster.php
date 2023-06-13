@@ -9,6 +9,13 @@ use Entity\Exception\EntityNotFoundException;
 
 class Poster extends Image
 {
+    /**
+     * find the poster's using an poster id
+     * @param int $posterId
+     * @return Poster
+     * @throws EntityNotFoundException if poster not found in database
+     *
+     */
     public static function findById(int $posterId): Poster
     {
         $posterRequest = MyPdo::getInstance()->prepare(

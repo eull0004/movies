@@ -16,63 +16,41 @@ class People
     private string $name;
     private string $biography;
     private string $placeOfBirth;
-
-
-    /**
-     * Get the value of id
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
-
-    /**
-     * Get the value of avatarId
-     */
-    public function getAvatarId()
+    public function getAvatarId(): string
     {
         return $this->avatarId;
     }
-
-    /**
-     * Get the value of birthday
-     */
-    public function getBirthday()
+    public function getBirthday(): string
     {
         return $this->birthday;
     }
-
-    /**
-     * Get the value of deathday
-     */
-    public function getDeathday()
+    public function getDeathday(): ?string
     {
         return $this->deathday;
     }
-
-    /**
-     * Get the value of name
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
-
-    /**
-     * Get the value of biography
-     */
-    public function getBiography()
+    public function getBiography(): string
     {
         return $this->biography;
     }
-
-    /**
-     * Get the value of placeOfBirth
-     */
-    public function getPlaceOfBirth()
+    public function getPlaceOfBirth(): string
     {
         return $this->placeOfBirth;
     }
+    /**
+     * find the people's using an people id
+     * @param int $peopleId
+     * @return People
+     * @throws EntityNotFoundException if people not found in database
+     *
+     */
     public static function findById(int $peopleId): People
     {
         $peopleRequest = MyPdo::getInstance()->prepare(
