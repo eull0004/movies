@@ -22,6 +22,21 @@ tout d'abord cloner le projet avec la commande suivante :
 Ensuite, il faut installer les dépendances nécéssaire au bon fonctionnement du projet avec la commande suivante :
 `composer install`
 
+### How To Set Up a DataBase
+
+créer un fichier nommé "`.mypdo.ini`" dans le dossier principal du projet.
+Le fichier doit être au format :  
+[mypdo]  
+dsn = ...  
+username = ...  
+password = ...
+
+e.g.  
+ `[mypdo] `  
+ `dsn` = 'mysql:host=mysql;dbname=exemple01;charset=utf8'  
+ `username` = 'exemple'  
+ `password` = 'exemplepassword'
+
 ### Comment lancer le serveur sur Linux :
 
 effectuer la commande suivante :
