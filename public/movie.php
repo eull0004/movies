@@ -30,7 +30,7 @@ $webPage->setTitle("Films - {$movie->getTitle()}");
 $webPage->appendContent(
     <<<HTML
     <div class="movie__info">
-        <img class="movie__poster" src="image.php?posterId={$movie->getPosterId()}">
+        <img class="movie__poster" src="poster.php?posterId={$movie->getPosterId()}" alt="{$movie->getTitle()}">
         <div class="movie__text">
             <div class="main__text">{$webPage->escapeString($movie->getTitle())} {$movie->getReleaseDate()}</div>
             <div class="second__text">
@@ -43,23 +43,23 @@ $webPage->appendContent(
 HTML
 );
 
-$webPage->appendContent("<li class='cast'>");
+$webPage->appendContent("<section class='cast'>");
 
 foreach(CastCollection::findByMovieId($movieId) as $actors) {
     $people = People::findById($actors->getPeopleId());
     $webPage->appendContent(
         <<<HTML
-        <ul class="actor">
-            <img class="actor__avatar" src="image.php?avatarId={$people->getAvatarId()}" alt="{$people->getName()}">
+        <div class="actor">
+            <img class="actor__avatar" src="avatar.php?avatarId={$people->getAvatarId()}" alt="{$people->getName()}">
             <div class="actor__info">
                 <div class="actor__role">{$webPage->escapeString($actors->getRole())}</div> 
                 <div class="actor__name">{$webPage->escapeString($people->getName())}</div>
             </div>
-        </ul>\n
+        </div>\n
         HTML
     );
 }
 
-$webPage->appendContent("</li>");
+$webPage->appendContent("</section>");
 
 echo $webPage->toHTML();
