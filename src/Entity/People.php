@@ -10,7 +10,7 @@ use Entity\Exception\EntityNotFoundException;
 class People
 {
     private int $id;
-    private string $avatarId;
+    private ?string $avatarId;
     private string $birthday;
     private ?string $deathday;
     private string $name;
