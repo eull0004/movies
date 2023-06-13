@@ -19,7 +19,7 @@ class CastCollection
     {
         $castRequest = MyPdo::getInstance()->prepare(
             <<<'SQL'
-			SELECT id
+			SELECT id, movieId, peopleId, role, orderIndex
 			FROM cast
 			WHERE movieId = ?
 			SQL
