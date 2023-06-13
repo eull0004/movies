@@ -9,6 +9,13 @@ use Entity\Exception\EntityNotFoundException;
 
 class Avatar extends Image
 {
+    /**
+     * find the avatar's using an avatar id
+     * @param int $avatarId
+     * @return Avatar
+     * @throws EntityNotFoundException if avatar not found in database
+     *
+     */
     public static function findById(int $avatarId): Avatar
     {
         $avatarRequest = MyPdo::getInstance()->prepare(
