@@ -6,8 +6,8 @@ namespace Entity;
 
 class Image
 {
-    private int $id;
-    private string $jpeg;
+    protected int $id;
+    protected string $jpeg;
 
     /**
      * Get the value of id

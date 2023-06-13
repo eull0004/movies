@@ -30,7 +30,9 @@ class AppWebPage extends WebPage
         <section class="content">
             {$this->getBody()}
         </section>
-            <p class="footer">{$this->getLastModification()}</p>
+        <section class="footer">
+            <div>{$this->getLastModification()}</div>
+        </section>
     </body>
     </html>
 HTML;
