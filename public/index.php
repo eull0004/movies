@@ -11,8 +11,8 @@ foreach(MovieCollection::findAll() as $movie) {
     $webPage->appendContent(
         <<<HTML
             <a class="movie" href="/movie.php?movieId={$movie->getId()}">
-                <img class="movie__poster" src="image.php?posterId={$movie->getPosterId()}">
-                <div class="movie__title">{$movie->getTitle()}</div> 
+                <img class="movie__poster" src="image.php?posterId={$movie->getPosterId()}" alt="{$movie->getTitle()}">
+                <div class="movie__title">{$webPage->escapeString($movie->getTitle())}</div> 
             </a>
         HTML
     );
