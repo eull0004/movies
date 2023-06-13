@@ -11,7 +11,7 @@ class People
 {
     private int $id;
     private ?string $avatarId;
-    private string $birthday;
+    private ?string $birthday;
     private ?string $deathday;
     private string $name;
     private string $biography;
@@ -20,11 +20,11 @@ class People
     {
         return $this->id;
     }
-    public function getAvatarId(): string
+    public function getAvatarId(): ?string
     {
         return $this->avatarId;
     }
-    public function getBirthday(): string
+    public function getBirthday(): ?string
     {
         return $this->birthday;
     }
