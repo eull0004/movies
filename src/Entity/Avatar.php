@@ -19,7 +19,7 @@ class Avatar extends Image
 			SQL
         );
         $avatarRequest->execute([$avatarId]);
-        $avatar = $avatarRequest->fetchObject(avatar::class);
+        $avatar = $avatarRequest->fetchObject(Avatar::class);
         if (!$avatar) {
             throw new EntityNotFoundException('Avatar not found');
         }
