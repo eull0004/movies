@@ -12,7 +12,7 @@ class Movie
     private int $id;
     private int $posterId;
     private string $originalTitle;
-    private string $overwiew;
+    private string $overview;
     private string $releaseDate;
     private int $runtime;
     private string $tagline;
@@ -35,11 +35,11 @@ class Movie
     }
 
     /**
-     * Get the value of overwiew
+     * Get the value of overview
      */
-    public function getOverwiew()
+    public function getOverview()
     {
-        return $this->overwiew;
+        return $this->overview;
     }
 
     /**
@@ -75,7 +75,7 @@ class Movie
     }
 
     /**
-     * Get the value of title
+     *  Get the value of title
      */
     public function getTitle()
     {
