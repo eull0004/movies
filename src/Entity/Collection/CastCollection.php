@@ -15,7 +15,7 @@ class CastCollection
      * @param  int $movieId
      * @return Cast[]
      */
-    public static function findAll(int $movieId): array
+    public static function findByMovieId(int $movieId): array
     {
         $castRequest = MyPdo::getInstance()->prepare(
             <<<'SQL'
