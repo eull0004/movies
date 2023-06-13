@@ -33,7 +33,6 @@ body {
 }
 .header {
 	justify-content: center;
-	font-size: 1.93rem;
 	font-family: var(--title-font-familly);
 	font-weight: bold;
 }
@@ -83,12 +82,18 @@ body {
 	height: auto;
 }
 
+.cast{
+	align-content: space-around;
+}
+
 .second__text{
 	flex-direction: column;
 }
 
 .actor__avatar{
 	flex-grow: 1;
+	height: auto;
+	width: 50px;
 }
 
 .actor__info{
