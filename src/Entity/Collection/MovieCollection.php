@@ -27,4 +27,21 @@ class MovieCollection
         $movieDataReq->execute();
         return $movieDataReq->fetchAll(\PDO::FETCH_CLASS, Movie::class);
     }
+    public static function findAllByPeopleId(int $peopleId): array
+    {
+        $movieDataReq = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+			SELECT m.id, m.posterId, m.originalTitle, m.overview, m.releaseDate, m.runtime, m.tagline, m.title
+			FROM movie m
+			WHERE id IN (
+				SELECT c.movieId
+				FROM cast c
+				WHERE c.peopleId = :peopleId
+			)
+			ORDER BY m.title
+			SQL
+        );
+        $movieDataReq->execute([ ':peopleId' => $peopleId ]);
+        return $movieDataReq->fetchAll(\PDO::FETCH_CLASS, Movie::class);
+    }
 }
