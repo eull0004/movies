@@ -7,24 +7,22 @@ use Entity\People;
 use Entity\Exception\EntityNotFoundException;
 use Html\AppWebPage;
 
-if (!isset($_GET["CastId"]) || !ctype_digit($_GET["CastId"])) {
+if (!isset($_GET["peopleId"]) || !ctype_digit($_GET["peopleId"])) {
     header('Location: /movie.php', true, 302);
     exit();
 }
 
-$castId = (int)$_GET["CastId"];
+$peopleId = (int)$_GET["peopleId"];
 
 $webPage = new AppWebPage();
 
 try {
-    $cast = Cast::findById($castId);
+    $actor = People::findById($peopleId);
 
 } catch (EntityNotFoundException $e) {
     http_response_code(404);
     echo $e->getMessage();
 }
-
-$actor = $cast->getPeople();
 
 $webPage->setTitle("Films - {$actor->getName()}");
 
