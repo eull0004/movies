@@ -43,7 +43,7 @@ $webPage->appendContent(
 HTML
 );
 
-$webPage->appendContent("<section class='cast'>");
+$webPage->appendContent("<section class='casts__info'>");
 
 foreach(CastCollection::findByMovieId($movieId) as $cast) {
     $people = $cast->getPeople();
