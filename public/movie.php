@@ -27,6 +27,14 @@ try {
 
 $webPage->setTitle("Films - {$movie->getTitle()}");
 
+$webPage->appendToMenu(
+    <<<HTML
+        <a href="admin/movie-save.php"><button>Modifier</button></a>
+        
+    HTML
+
+);
+
 $webPage->appendContent(
     <<<HTML
     <div class="movie__info">
@@ -41,6 +49,14 @@ $webPage->appendContent(
         </div>
     </div>\n
 HTML
+);
+
+$webPage->appendToMenu(
+    <<<HTML
+        <a class="movie__modify" href="admin/movie-form.php?movieId={$movieId}">Modifier</a>
+        <a class="movie__delete" href="admin/movie-delete.php?movieId={$movieId}">Supprimer</a>
+HTML
+
 );
 
 $webPage->appendContent("<section class='casts__info'>");
