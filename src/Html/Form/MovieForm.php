@@ -16,7 +16,7 @@ class MovieForm
     /**
      * @param Movie|null $movie
      */
-    public function __construct(?Movie $movie=null)
+    public function __construct(?Movie $movie)
     {
         $this->movie = $movie;
     }
@@ -36,35 +36,35 @@ class MovieForm
                     <input name="id" type="hidden" value="{$this?->movie?->getId()}">
                     <label for="title">
                         Title : 
-                        <input type="text" name="title" value="{$this->escapeString($this->movie->getTitle())}" required>
+                        <input type="text" name="title" value="{$this->escapeString($this?->movie?->getTitle())}" required>
                     </label>
                     <label for="originalLanguage">
                         Original Language : 
-                        <input type="text" name="originalLanguage" value="{$this->escapeString($this->movie->getOriginalLanguage())}" required>
+                        <input type="text" name="originalLanguage" value="{$this->escapeString($this?->movie?->getOriginalLanguage())}" required>
                     </label>
                     <label for="originalTitle">
                         Original Title : 
-                        <input type="text" name="originalTitle" value="{$this->escapeString($this->movie->getOriginalTitle())}" required>
+                        <input type="text" name="originalTitle" value="{$this->escapeString($this?->movie?->getOriginalTitle())}" required>
                     </label>
                     <label for="overview">
                         Overview : 
-                        <input type="text" name="overview" value="{$this->escapeString($this->movie->getOverview())}" required>
+                        <textarea maxlength="200" name="overview"required>"{$this->escapeString($this?->movie?->getOverview())}"</textarea>
                     </label>
                     <label for="releaseDate">
                         Release Date : 
-                        <input type="date" name="releaseDate" value="{$this->movie->getReleaseDate()}" required>
+                        <input type="date" name="releaseDate" value="{$this?->movie?->getReleaseDate()}" required>
                     </label>
                     <label for="runtime">
                         Runtime : 
-                        <input type="number" name="runtime" min="0" max="180" step="10" value="{$this->movie->getRuntime()}" required>
+                        <input type="number" name="runtime" min="0" max="180" step="10" value="{$this?->movie?->getRuntime()}" required>
                     </label>
                     <label for="tagline">
                         Tagline : 
-                        <input type="text" name="tagline" value="{$this->escapeString($this->movie->getTagline())}" required>
+                        <textarea maxlength="100" name="tagline" required>"{$this->escapeString($this?->movie?->getTagline())}"</textarea>
                     </label>
-                    <input type="hidden" name="posterId" value="{$this->movie->getPosterId()}">
+                    <input type="hidden" name="posterId" value="{$this?->movie?->getPosterId()}">
             
-                    <input type="submit" value="Enregistrer">
+                    <input type="submit" value="Valider">
                 </form>
         HTML;
     }

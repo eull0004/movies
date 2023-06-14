@@ -7,6 +7,13 @@ use Html\AppWebPage;
 
 $webPage = new AppWebPage("Films");
 
+$webPage->appendToMenu(
+    <<<HTML
+        <a class="movie__add" href="admin/movie-form.php?movieId="><button>Ajouter</button></a>
+    HTML
+
+);
+
 foreach(MovieCollection::findAll() as $movie) {
     $webPage->appendContent(
         <<<HTML
