@@ -64,8 +64,6 @@ $webPage->appendContent(
 HTML
 );
 
-/** boucle foreach sur les films d'un acteur */
-/** Afficher son role dans le film */
 $webPage->appendContent("<section class='actor__movies__info'>");
 
 foreach ($movies as $movie) {
