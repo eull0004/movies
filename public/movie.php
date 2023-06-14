@@ -49,14 +49,16 @@ foreach(CastCollection::findByMovieId($movieId) as $cast) {
     $people = $cast->getPeople();
     $webPage->appendContent(
         <<<HTML
-        <div class="cast">
-            <img class="cast__avatar" src="avatar.php?avatarId={$people->getAvatarId()}" alt="{$people->getName()}">
-            <div class="cast__info">
-                <div class="cast__role">{$webPage->escapeString($cast->getRole())}</div> 
-                <div class="cast__name">{$webPage->escapeString($people->getName())}</div>
-            </div>
-        </div>\n
-        HTML
+		<div class="cast">
+			<a class="cast__link" href="/actor.php?peopleId={$people->getId()}">
+				<img class="cast__avatar" src="avatar.php?avatarId={$people->getAvatarId()}" alt="{$people->getName()}">
+				<div class="cast__info">
+					<div class="cast__role">{$webPage->escapeString($cast->getRole())}</div> 
+					<div class="cast__name">{$webPage->escapeString($people->getName())}</div>
+				</div>
+			</a>
+		</div>\n
+		HTML
     );
 }
 
