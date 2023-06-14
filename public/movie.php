@@ -22,7 +22,7 @@ try {
 
 } catch (EntityNotFoundException $e) {
     http_response_code(404);
-    echo $e->getMessage();
+    exit();
 }
 
 $webPage->setTitle("Films - {$movie->getTitle()}");
@@ -32,7 +32,6 @@ $webPage->appendToMenu(
         <a href="admin/movie-save.php"><button>Modifier</button></a>
         
     HTML
-
 );
 
 $webPage->appendContent(
@@ -56,7 +55,6 @@ $webPage->appendToMenu(
         <a class="movie__modify" href="admin/movie-form.php?movieId={$movieId}">Modifier</a>
         <a class="movie__delete" href="admin/movie-delete.php?movieId={$movieId}">Supprimer</a>
 HTML
-
 );
 
 $webPage->appendContent("<section class='casts__info'>");
