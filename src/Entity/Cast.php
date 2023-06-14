@@ -6,6 +6,8 @@ namespace Entity;
 
 use Database\MyPdo;
 use Entity\Exception\EntityNotFoundException;
+use Entity\Movie;
+use Entity\People;
 
 class Cast
 {
@@ -67,5 +69,27 @@ class Cast
             throw new EntityNotFoundException('Cast with id ' . $idCast . ' does not exist.');
         }
         return $cast;
+    }
+    /**
+     * find the people (actor) using the cast instance related people id
+     * @return People
+     * @throws EntityNotFoundException if People not found in database
+     *
+     */
+    public function getPeople(): People
+    {
+        $people = People::findById($this->getPeopleId());
+        return $people;
+    }
+    /**
+     * find the movie using an the cast instance related movie id
+     * @return Movie
+     * @throws EntityNotFoundException if Movie not found in database
+     *
+     */
+    public function getMovie(): Movie
+    {
+        $movie = Movie::findById($this->getMovieId());
+        return $movie;
     }
 }
