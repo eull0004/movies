@@ -16,7 +16,7 @@ class MovieForm
     /**
      * @param Movie|null $movie
      */
-    public function __construct(?Movie $movie)
+    public function __construct(?Movie $movie = null)
     {
         $this->movie = $movie;
     }
