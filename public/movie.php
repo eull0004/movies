@@ -45,15 +45,15 @@ HTML
 
 $webPage->appendContent("<section class='cast'>");
 
-foreach(CastCollection::findByMovieId($movieId) as $actors) {
-    $people = People::findById($actors->getPeopleId());
+foreach(CastCollection::findByMovieId($movieId) as $cast) {
+    $people = $cast->getPeople();
     $webPage->appendContent(
         <<<HTML
-        <div class="actor">
-            <img class="actor__avatar" src="avatar.php?avatarId={$people->getAvatarId()}" alt="{$people->getName()}">
-            <div class="actor__info">
-                <div class="actor__role">{$webPage->escapeString($actors->getRole())}</div> 
-                <div class="actor__name">{$webPage->escapeString($people->getName())}</div>
+        <div class="cast">
+            <img class="cast__avatar" src="avatar.php?avatarId={$people->getAvatarId()}" alt="{$people->getName()}">
+            <div class="cast__info">
+                <div class="cast__role">{$webPage->escapeString($cast->getRole())}</div> 
+                <div class="cast__name">{$webPage->escapeString($people->getName())}</div>
             </div>
         </div>\n
         HTML
