@@ -11,21 +11,21 @@ use Entity\Cast;
 class People
 {
     private int $id;
-    private ?string $avatarId;
+    private ?int $avatarId;
     private ?string $birthday;
     private ?string $deathday;
     private string $name;
-    private string $biography;
-    private string $placeOfBirth;
+    private ?string $biography;
+    private ?string $placeOfBirth;
     public function getId(): int
     {
         return $this->id;
     }
-    public function getAvatarId(): ?string
+    public function getAvatarId(): ?int
     {
         return $this->avatarId;
     }
-    public function getBirthday(): ?string
+    public function getBirthday(): string
     {
         return $this->birthday;
     }

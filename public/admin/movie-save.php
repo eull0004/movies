@@ -7,7 +7,7 @@ use Exception\ParameterException;
 
 try {
     if(!isset($_POST["originalLanguage"])) {
-        throw new ParameterException("original Language is missing");
+        throw new ParameterException("Original Language is missing");
     }
 
     if(!isset($_POST["originalTitle"])) {
@@ -15,7 +15,7 @@ try {
     }
 
     if(!isset($_POST["overview"])) {
-        throw new ParameterException("overview is missing");
+        throw new ParameterException("Overview is missing");
     }
 
     if(!isset($_POST["releaseDate"])) {
@@ -23,24 +23,25 @@ try {
     }
 
     if(!isset($_POST["runtime"])) {
-        throw new ParameterException("runtime is missing");
+        throw new ParameterException("Runtime is missing");
     }
 
     if(!isset($_POST["tagline"])) {
-        throw new ParameterException("tagline is missing");
+        throw new ParameterException("Tagline is missing");
     }
 
     if(!isset($_POST["title"])) {
-        throw new ParameterException("title is missing");
+        throw new ParameterException("Title is missing");
     }
     $movieForm = new MovieForm();
     $movieForm->setEntityFromQueryString();
     $movieForm->getMovie()->save();
-    header('Location: /index.php');
+    header('Location: /index.php', true, 302);
     exit();
 
 } catch (ParameterException) {
     http_response_code(400);
 } catch (Exception) {
     http_response_code(500);
+
 }

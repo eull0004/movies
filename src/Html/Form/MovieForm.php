@@ -32,43 +32,48 @@ class MovieForm
     public function getHtmlForm(string $action): string
     {
         return <<<HTML
-                <form action="$action" method="post"  >
-                    <input name="id" type="hidden" value="{$this?->movie?->getId()}">
-                    <label for="title">
-                        Title : 
-                        <input type="text" name="title" value="{$this->escapeString($this?->movie?->getTitle())}" required>
-                    </label>
-                    <label for="originalLanguage">
-                        Original Language : 
-                        <input type="text" name="originalLanguage" value="{$this->escapeString($this?->movie?->getOriginalLanguage())}" required>
-                    </label>
-                    <label for="originalTitle">
-                        Original Title : 
-                        <input type="text" name="originalTitle" value="{$this->escapeString($this?->movie?->getOriginalTitle())}" required>
-                    </label>
-                    <label for="overview">
-                        Overview : 
-                        <textarea maxlength="200" name="overview"required>"{$this->escapeString($this?->movie?->getOverview())}"</textarea>
-                    </label>
-                    <label for="releaseDate">
-                        Release Date : 
-                        <input type="date" name="releaseDate" value="{$this?->movie?->getReleaseDate()}" required>
-                    </label>
-                    <label for="runtime">
-                        Runtime : 
-                        <input type="number" name="runtime" min="0" max="180" step="10" value="{$this?->movie?->getRuntime()}" required>
-                    </label>
-                    <label for="tagline">
-                        Tagline : 
-                        <textarea maxlength="100" name="tagline" required>"{$this->escapeString($this?->movie?->getTagline())}"</textarea>
-                    </label>
-                    <input type="hidden" name="posterId" value="{$this?->movie?->getPosterId()}">
+                <form class="form__container" action="$action" method="post">
+                    <div class="movie__form">
+                        <input name="id" type="hidden" value="{$this?->movie?->getId()}">
+                        <label for="title">
+                            Title : 
+                            <input type="text" name="title" value="{$this->escapeString($this?->movie?->getTitle())}" required>
+                        </label>
+                        <label for="originalLanguage">
+                            Original Language : 
+                            <input type="text" name="originalLanguage" value="{$this->escapeString($this?->movie?->getOriginalLanguage())}" required>
+                        </label>
+                        <label for="originalTitle">
+                            Original Title : 
+                            <input type="text" name="originalTitle" value="{$this->escapeString($this?->movie?->getOriginalTitle())}" required>
+                        </label>
+                        <label for="overview">
+                            Overview : 
+                            <textarea maxlength="200" name="overview"required>"{$this->escapeString($this?->movie?->getOverview())}"</textarea>
+                        </label>
+                        <label for="releaseDate">
+                            Release Date : 
+                            <input type="date" name="releaseDate" value="{$this?->movie?->getReleaseDate()}" required>
+                        </label>
+                        <label for="runtime">
+                            Runtime : 
+                            <input type="number" name="runtime" min="0" max="180" step="10" value="{$this?->movie?->getRuntime()}" required>
+                        </label>
+                        <label for="tagline">
+                            Tagline : 
+                            <textarea maxlength="100" name="tagline" required>"{$this->escapeString($this?->movie?->getTagline())}"</textarea>
+                        </label>
+                        <input type="hidden" name="posterId" value="{$this?->movie?->getPosterId()}">
             
-                    <input type="submit" value="Valider">
+                        <input type="submit" value="Valider">
+                    </div>
                 </form>
         HTML;
     }
 
+    /**
+     * @throws ParameterException
+     */
     public function setEntityFromQueryString(): void
     {
         $movieId = null;
@@ -116,6 +121,6 @@ class MovieForm
         }
         $title = $this->stripTagsAndTrim($_POST["title"]);
 
-        $this->movie = Movie::create($originalLanguage, $originalTitle, $overview, $releaseDate, $runtime, $tagline, $title, $posterId, $movieId);
+        $this->movie = Movie::create($originalTitle, $originalLanguage, $overview, $releaseDate, $runtime, $tagline, $title, $posterId, $movieId);
     }
 }

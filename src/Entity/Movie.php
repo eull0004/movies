@@ -200,13 +200,13 @@ class Movie
         $update = MyPdo::getInstance()->prepare(
             <<<'SQL'
                     UPDATE movie
-                    SET title = :title
-                    AND originalLanguage = :oLang
-                    AND originalTitle = :oTitle
-                    AND overview = :overwiew
-                    AND releaseDate = :releaseDate
-                    AND runtime = :runtime
-                    AND tagline = :tagline
+                    SET title = :title,
+                    originalLanguage = :oLang,
+                    originalTitle = :oTitle,
+                    overview = :overwiew,
+                    releaseDate = :releaseDate,
+                    runtime = :runtime,
+                    tagline = :tagline
                     WHERE id = :id
         SQL
         );
@@ -234,8 +234,8 @@ class Movie
     {
         $insert = MyPdo::getInstance()->prepare(
             <<<'SQL'
-                    INSERT INTO movie (originalLanguage,originalTitle,overview,releaseDate,runtime,tagline,title,id)
-                    VALUES (:originalLanguage, :originalTitle, :overview, :releaseDate, :runtime, :tagline, :title, :id)
+                    INSERT INTO movie (originalTitle,originalLanguage,overview,releaseDate,runtime,tagline,title,id)
+                    VALUES (:originalTitle, :originalLanguage, :overview, :releaseDate, :runtime, :tagline, :title, :id)
         SQL
         );
         $insert->bindValue(':originalLanguage', $this->originalLanguage);
