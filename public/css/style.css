@@ -35,6 +35,8 @@ body {
   border-width: 4px;
   border-style: solid;
 }
+
+/* HEADER */
 .header {
   justify-content: center;
   font-family: var(--title-font-familly);
@@ -44,6 +46,8 @@ body {
 .header h1::before {
   content: "🎬 ";
 }
+
+/* CONTENT */
 .content {
   padding-left: 20px;
   font-size: 1.5rem;
@@ -52,9 +56,10 @@ body {
   flex-wrap: wrap;
   flex-grow: 1;
   gap: 20px;
-  align-content: space-between;
+  /* align-content: space-between; */
 }
 
+/* movie.php */
 .movie {
   display: flex;
   flex-direction: column;
@@ -81,9 +86,15 @@ body {
 
 .casts__info {
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+  flex-direction: column;
   height: auto;
+}
+
+.cast__link {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-bottom: 2em;
 }
 
 .cast {
@@ -110,6 +121,45 @@ body {
   color: transparent;
 }
 
+/* actor.php */
+
+.actor__movies__info,
+.actor__info {
+  flex-basis: 100%;
+}
+
+.actor__info {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.actor__info:first-of-type {
+  padding-top: 1.5em;
+}
+
+.actor__name::before {
+  content: "Nom: ";
+}
+
+.actor__biography::before {
+  content: "Biographie: ";
+}
+
+.actor__death__date::before {
+  content: "Date du décès: ";
+}
+
+.actor__birth__date::before {
+  content: "Date de naissance: ";
+}
+
+.actor__birthplace::before {
+  content: "Lieu de naissance: ";
+}
+
+/* FOOTER */
 .footer {
   justify-content: center;
   padding-top: 20px;

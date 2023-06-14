@@ -88,4 +88,7 @@ foreach ($movies as $movie) {
     );
 }
 
+$webPage->appendContent("</section>");
+
+
 echo $webPage->toHtml();
