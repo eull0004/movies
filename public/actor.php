@@ -7,6 +7,7 @@ use Entity\People;
 use Entity\Exception\EntityNotFoundException;
 use Html\AppWebPage;
 use Entity\Collection\MovieCollection;
+use Exception\ParameterException;
 
 if (!isset($_GET["peopleId"]) || !ctype_digit($_GET["peopleId"])) {
     header('Location: /movie.php', true, 302);
@@ -19,19 +20,26 @@ $webPage = new AppWebPage();
 
 try {
     $actor = People::findById($peopleId);
+    $movies = MovieCollection::findAllByPeopleId($peopleId);
 
-} catch (EntityNotFoundException $e) {
+} catch (ParameterException) {
+    http_response_code(400);
+    exit();
+} catch (EntityNotFoundException) {
     http_response_code(404);
-    echo $e->getMessage();
+    exit();
+} catch (Exception) {
+    http_response_code(500);
+    exit();
 }
 
-$webPage->setTitle("Films - {$actor->getName()}");
+$webPage->setTitle("Films - {$webPage->escapeString($actor->getName())}");
 
 $webPage->appendContent(
     <<<HTML
     <section class="actor__info">
 		<div class="actor__info__avatar">
-			<img class="actor__avatar" src="poster.php?posterId={$actor->getAvatarId()}" alt="{$actor->getName()}">
+			<img class="actor__avatar" src="poster.php?posterId={$actor->getAvatarId()}" alt="{$webPage->escapeString($actor->getName())}">
 		</div>
 		<div class="actor__info__definition">
 			<div class="actor__name">
@@ -60,7 +68,7 @@ HTML
 /** Afficher son role dans le film */
 $webPage->appendContent("<section class='actor__movies__info'>");
 
-foreach (MovieCollection::findAllByPeopleId($peopleId) as $movie) {
+foreach ($movies as $movie) {
     $cast = $actor->getCastByMovieId($movie->getId());
     $webPage->appendContent(
         <<<HTML
