@@ -11,7 +11,7 @@ try {
     if (isset($_GET["movieId"])) {
         $movieId = (int)$_GET["movieId"];
         if(!ctype_digit($_GET["movieId"])) {
-            throw new ParameterException('movidId not a int');
+            throw new ParameterException('movieId not a int');
         }
         $movie = Movie::findById($movieId);
         $movie->delete();
