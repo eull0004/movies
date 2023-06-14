@@ -6,6 +6,7 @@ namespace Entity;
 
 use Database\MyPdo;
 use Entity\Exception\EntityNotFoundException;
+use Entity\Cast;
 
 class People
 {
@@ -66,5 +67,33 @@ class People
             throw new EntityNotFoundException('People not found');
         }
         return $people;
+    }
+    /**
+     * find the people's related Cast to a certain movie using the movie id
+     * and the people related intance id
+     * @param int $peopleId
+     * @return People
+     * @throws EntityNotFoundException if people not found in database
+     *
+     */
+    public function getCastByMovieId(int $movieId): Cast
+    {
+        $castRequest = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+			SELECT id, movieId, peopleId, role, orderIndex
+			FROM cast
+			WHERE movieId = :movieId
+			AND peopleId = :peopleId
+			SQL
+        );
+        $castRequest->execute([
+            ':movieId' => $movieId,
+            ':peopleId' => $this->getId()
+        ]);
+        $cast = $castRequest->fetchObject(Cast::class);
+        if (!$cast) {
+            throw new EntityNotFoundException('Cast not found');
+        }
+        return $cast;
     }
 }
