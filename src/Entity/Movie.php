@@ -260,4 +260,24 @@ class Movie
         }
         return $this;
     }
+
+    /**
+     * find an array of movie by using genreId
+    * @param int $genreId
+    * @return array
+     */
+    public static function findByGenreId(int $genreId): array
+    {
+        $movieRequest = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+			SELECT id, posterId,originalLanguage, originalTitle, overview, releaseDate, runtime, tagline, title
+			FROM movie
+			WHERE id IN (SELECT movieId
+			            FROM movie_genre
+			            WHERE genreId = ?)
+			SQL
+        );
+        $movieRequest->execute([$genreId]);
+        return $movieRequest->fetchAll(\PDO::FETCH_CLASS, Movie::class);
+    }
 }
