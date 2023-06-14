@@ -47,6 +47,13 @@ body {
   content: "🎬 ";
 }
 
+/* MENU */
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 /* CONTENT */
 .content {
   padding-left: 20px;
@@ -106,9 +113,7 @@ body {
 }
 
 .cast__avatar {
-  flex-grow: 1;
   height: auto;
-  width: 50px;
 }
 
 .cast__info {
@@ -159,13 +164,126 @@ body {
   content: "Lieu de naissance: ";
 }
 
+/*Forms*/
+.form__container{
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--primary-color);
+}
+
+.movie__form{
+  margin-bottom: 20px;
+}
+
+.movie__form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.movie__form input[type="text"],
+.movie__form input[type="date"],
+.movie__form input[type="number"],
+.movie__form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--primary-color);;
+}
+
+.movie__form textarea {
+  height: 120px;
+}
+
+.movie__form input[type="text"]:focus,
+.movie__form input[type="date"]:focus,
+.movie__form input[type="date"]:focus,
+.movie__form textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.6);
+}
+
+.movie__form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.movie__form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.movie__form input[type="submit"]:active{
+  background-color: #3e8e41;
+}
+
+/*Button*/
+button{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover{
+  background-color: #45a049;
+}
+
+button:active{
+  background-color: #3e8e41;
+}
+
+/*Select*/
+select{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  width: 200px;
+}
+
+select:hover{
+  border-color: #888;
+}
+
+select:focus{
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.6);
+}
+
+select option{
+  padding: 10px;
+  background-color: #fff;
+  color: #333333;
+}
+
+select option:hover{
+  background-color: #e0e0e0;
+}
+
 /* FOOTER */
 .footer {
   justify-content: center;
   padding-top: 20px;
   padding-bottom: 20px;
   font-family: var(--title-font-familly);
-  font-size: 1.8rem;
   font-weight: bold;
 }
 

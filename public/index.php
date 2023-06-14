@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Entity\Collection\GenreCollection;
 use Entity\Collection\MovieCollection;
+use Entity\Genre;
 use Entity\Movie;
 use Exception\ParameterException;
 use Html\AppWebPage;
@@ -12,7 +13,7 @@ $webPage = new AppWebPage("Films");
 
 $webPage->appendToMenu(
     <<<HTML
-        <a class="movie__add" href="admin/movie-form.php?movieId="><button>Ajouter</button></a>
+        <a class="movie__add" href="admin/movie-form.php"><button>Ajouter</button></a>
     HTML
 );
 
@@ -45,6 +46,8 @@ if(isset($_POST['genre'])) {
         throw new ParameterException('movie Id not a int');
     }
     $genreId = (int)$_POST['genre'];
+    $selectGenre = Genre::findById($genreId);
+    $webPage->setTitle("Films - {$selectGenre->getName()}");
     foreach (Movie::findByGenreId($genreId) as $movie) {
         $webPage->appendContent(
             <<<HTML
