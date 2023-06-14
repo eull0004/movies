@@ -7,12 +7,12 @@ use Entity\People;
 use Entity\Exception\EntityNotFoundException;
 use Html\AppWebPage;
 
-if (!isset($_GET["CastId"]) || !ctype_digit($_GET["CastId"])) {
+if (!isset($_GET["castId"]) || !ctype_digit($_GET["castId"])) {
     header('Location: /movie.php', true, 302);
     exit();
 }
 
-$castId = (int)$_GET["CastId"];
+$castId = (int)$_GET["castId"];
 
 $webPage = new AppWebPage();
 
