@@ -27,6 +27,9 @@ class AppWebPage extends WebPage
         <section class="header">
             <h1>{$this->getTitle()}</h1>
         </section>
+       <section class="menu">
+            {$this->getMenu()}
+        </section> 
         <section class="content">
             {$this->getBody()}
         </section>

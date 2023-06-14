@@ -11,6 +11,7 @@ class WebPage
     use \Html\StringEscaper;
     private string $head = '';
     private string $title = '';
+    private string $menu = '';
     private string $body = '';
 
     /**
@@ -39,6 +40,14 @@ class WebPage
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    /**
+    * @return string
+    */
+    public function getMenu(): string
+    {
+        return $this->menu;
     }
 
     /**
@@ -105,6 +114,16 @@ class WebPage
     public function appendJsUrl(string $url): void
     {
         $this->appendToHead("<script src='{$url}'></script>");
+    }
+
+    /**
+     * Méthode ajoutant le contenu en paramètre dans le menu de l'instance indiquée
+    * @param string $content
+    * @return void
+     */
+    public function appendToMenu(string $content): void
+    {
+        $this->menu = $this->getMenu(). $content;
     }
 
     /**
